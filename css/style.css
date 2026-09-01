@@ -377,7 +377,7 @@ body.nav-hidden .order-pill{opacity:1;transform:translate(-50%,0);pointer-events
 
   .hero{min-height:100svh;height:100svh}
   .hero-content{padding-bottom:16vh}
-  .hero-logo{font-size:19vw}
+  .hero-logo{font-size:15vw}
   .hero-tag{font-size:24px;max-width:16ch}
   .hero-thumbs{bottom:74px;gap:8px;padding:0 10px}
   .thumb{width:56px;height:56px;border-radius:12px}
