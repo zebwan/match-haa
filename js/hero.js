@@ -9,7 +9,7 @@
     'assets/img/hero-4.webp', 'assets/img/hero-5.webp', 'assets/img/hero-6.webp',
     'assets/img/hero-7.webp', 'assets/img/hero-8.webp', 'assets/img/hero-9.webp'
   ];
-  var PHONE_IMGS = DESKTOP_IMGS.slice(0, 5);
+  var PHONE_IMGS = DESKTOP_IMGS.slice(0, 5).map(function (s) { return s.replace('.webp', '-sm.webp'); });
 
   var CONFIG = {
     wipeDuration: 2.2,      // seconds per transition

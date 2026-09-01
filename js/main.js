@@ -383,7 +383,14 @@
     var IMGS = ['assets/img/menu-1.webp', 'assets/img/menu-2.webp', 'assets/img/menu-3.webp',
                 'assets/img/menu-4.webp', 'assets/img/menu-5.webp', 'assets/img/menu-6.webp',
                 'assets/img/menu-7.webp', 'assets/img/menu-8.webp'];
-    IMGS.forEach(function (src) { var im = new Image(); im.src = src; });
+    // fetch the hover set only once the menu is near the viewport
+    var preIO = new IntersectionObserver(function (e) {
+      if (e[0].isIntersecting) {
+        IMGS.forEach(function (src) { var im = new Image(); im.src = src; });
+        preIO.disconnect();
+      }
+    }, { rootMargin: '600px 0px' });
+    preIO.observe(list.closest('.menu'));
     var pending = null;
     function swap(src) {
       if (photo.getAttribute('src') === src) return;
@@ -411,7 +418,7 @@
     var NS = 'http://www.w3.org/2000/svg';
     var S = 164;
     var total = path.getTotalLength();
-    var cars = IMGS.map(function (src) {
+    var buildCars = function () { return IMGS.map(function (src) {
       var g = document.createElementNS(NS, 'g');
       var img = document.createElementNS(NS, 'image');
       img.setAttribute('href', src);
@@ -427,9 +434,15 @@
       g.appendChild(img); g.appendChild(frame);
       carsG.appendChild(g);
       return g;
-    });
+    }); };
+    var cars = [];
     var svg = path.ownerSVGElement;
     var inView = false;
+    // photos are fetched only when the track approaches, not at page open
+    var buildIO = new IntersectionObserver(function (e) {
+      if (e[0].isIntersecting && !cars.length) { cars = buildCars(); buildIO.disconnect(); }
+    }, { rootMargin: '800px 0px' });
+    buildIO.observe(svg);
     new IntersectionObserver(function (e) { inView = e[0].isIntersecting; }).observe(svg);
     // sample the path ONCE; per-frame native path walks are expensive
     var SAMPLES = 900, pts = [];
