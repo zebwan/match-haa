@@ -302,7 +302,7 @@ body.nav-hidden .order-pill{opacity:1;transform:translate(-50%,0);pointer-events
   text-transform:uppercase;max-width:30ch;margin:0 auto 20px;padding:0 24px;
 }
 .track-wrap{margin-top:10px}
-.track{display:block;width:100%;height:auto;aspect-ratio:2/1}
+.gal-track{display:block;width:100%;height:auto;aspect-ratio:2/1}
 .track-ribbon{stroke:var(--green);stroke-width:96;stroke-linecap:round;stroke-linejoin:round}
 .track-ties{stroke:var(--cream);stroke-width:58;stroke-dasharray:10 54;opacity:.28;stroke-linecap:butt}
 .track-car-frame{fill:none;stroke:var(--pink);stroke-width:8}
