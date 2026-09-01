@@ -150,13 +150,26 @@
   function marquee(railId, trackId, pxPerSec) {
     var rail = document.getElementById(railId), track = document.getElementById(trackId);
     if (!rail || !track) return;
-    // duplicate content until at least 2x rail width
-    var baseWidth = track.scrollWidth;
+    // duplicate content until at least 2x rail width.
+    // NOTE: scrollWidth lies on mobile-emulated Chrome (stays == rail width),
+    // which made this loop infinite on phones. Measure child geometry instead
+    // and hard-cap the copies so it can never spin.
     var clones = [].slice.call(track.children);
-    while (track.scrollWidth < rail.clientWidth * 2 + baseWidth) {
-      clones.forEach(function (c) { track.appendChild(c.cloneNode(true)); });
+    var gap = parseFloat(getComputedStyle(track).gap) || 32;
+    function contentWidth() {
+      if (!track.firstElementChild) return 0;
+      var f = track.firstElementChild.getBoundingClientRect();
+      var l = track.lastElementChild.getBoundingClientRect();
+      return l.right - f.left;
     }
-    var loopW = baseWidth + parseFloat(getComputedStyle(track).gap || 32);
+    var baseWidth = contentWidth();
+    if (!baseWidth || baseWidth < 50) baseWidth = clones.length * 320;
+    var copies = 0;
+    while (contentWidth() < rail.clientWidth * 2 + baseWidth && copies < 6) {
+      clones.forEach(function (c) { track.appendChild(c.cloneNode(true)); });
+      copies++;
+    }
+    var loopW = baseWidth + gap;
     var x = 0, dragging = false, lastPX = 0, dragVel = 0, inView = true, lastTime = performance.now();
     var io = new IntersectionObserver(function (e) { inView = e[0].isIntersecting; });
     io.observe(rail);
