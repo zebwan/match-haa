@@ -380,9 +380,9 @@
     var list = document.querySelector('.menu-list');
     if (!photo || !list) return;
     var DEFAULT = photo.getAttribute('src');
-    var IMGS = ['assets/img/menu-1.jpg', 'assets/img/menu-2.jpg', 'assets/img/menu-3.jpg',
-                'assets/img/menu-4.jpg', 'assets/img/menu-5.jpg', 'assets/img/menu-6.jpg',
-                'assets/img/menu-7.jpg', 'assets/img/menu-8.jpg'];
+    var IMGS = ['assets/img/menu-1.webp', 'assets/img/menu-2.webp', 'assets/img/menu-3.webp',
+                'assets/img/menu-4.webp', 'assets/img/menu-5.webp', 'assets/img/menu-6.webp',
+                'assets/img/menu-7.webp', 'assets/img/menu-8.webp'];
     IMGS.forEach(function (src) { var im = new Image(); im.src = src; });
     var pending = null;
     function swap(src) {
@@ -405,9 +405,9 @@
     var path = document.getElementById('trackPath');
     var carsG = document.getElementById('trackCars');
     if (!path || !carsG) return;
-    var IMGS = ['assets/img/gal-1.jpg', 'assets/img/gal-2.jpg', 'assets/img/gal-3.jpg',
-                'assets/img/gal-4.jpg', 'assets/img/gal-5.jpg', 'assets/img/gal-6.jpg',
-                'assets/img/gal-7.jpg', 'assets/img/gal-8.jpg'];
+    var IMGS = ['assets/img/gal-1.webp', 'assets/img/gal-2.webp', 'assets/img/gal-3.webp',
+                'assets/img/gal-4.webp', 'assets/img/gal-5.webp', 'assets/img/gal-6.webp',
+                'assets/img/gal-7.webp', 'assets/img/gal-8.webp'];
     var NS = 'http://www.w3.org/2000/svg';
     var S = 164;
     var total = path.getTotalLength();

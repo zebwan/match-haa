@@ -110,6 +110,13 @@
     })();
   }
 
-  if (document.readyState === 'complete') init();
-  else window.addEventListener('load', init);
+  function boot() {
+    if (window.THREE) { init(); return; }
+    var s = document.createElement('script');
+    s.src = 'js/three.min.js?v=8';
+    s.onload = init;
+    document.body.appendChild(s);
+  }
+  if (document.readyState === 'complete') boot();
+  else window.addEventListener('load', boot);
 })();

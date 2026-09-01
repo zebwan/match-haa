@@ -5,9 +5,9 @@
   'use strict';
 
   var DESKTOP_IMGS = [
-    'assets/img/hero-1.jpg', 'assets/img/hero-2.jpg', 'assets/img/hero-3.jpg',
-    'assets/img/hero-4.jpg', 'assets/img/hero-5.jpg', 'assets/img/hero-6.jpg',
-    'assets/img/hero-7.jpg', 'assets/img/hero-8.jpg', 'assets/img/hero-9.jpg'
+    'assets/img/hero-1.webp', 'assets/img/hero-2.webp', 'assets/img/hero-3.webp',
+    'assets/img/hero-4.webp', 'assets/img/hero-5.webp', 'assets/img/hero-6.webp',
+    'assets/img/hero-7.webp', 'assets/img/hero-8.webp', 'assets/img/hero-9.webp'
   ];
   var PHONE_IMGS = DESKTOP_IMGS.slice(0, 5);
 
